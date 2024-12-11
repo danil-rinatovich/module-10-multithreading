@@ -20,15 +20,14 @@ finish_function = datetime.datetime.now()
 result_work_function = finish_function - start_function
 print(result_work_function)
 
-thread1 = threading.Thread(target=write_words, args=(10, 'example5.txt'))
-thread2 = threading.Thread(target=write_words, args=(30, 'example6.txt'))
-thread3 = threading.Thread(target=write_words, args=(200, 'example7.txt'))
-thread4 = threading.Thread(target=write_words, args=(100, 'example8.txt'))
-
 start_flow = datetime.datetime.now()
+thread1 = threading.Thread(target=write_words, args=(10, 'example5.txt'))
 thread1.start()
+thread2 = threading.Thread(target=write_words, args=(30, 'example6.txt'))
 thread2.start()
+thread3 = threading.Thread(target=write_words, args=(200, 'example7.txt'))
 thread3.start()
+thread4 = threading.Thread(target=write_words, args=(100, 'example8.txt'))
 thread4.start()
 
 thread1.join()
