@@ -10,7 +10,8 @@ class Knight(threading.Thread):
         self.count = 100
         self.count_days = 0
 
-    def fight(self):
+    def run(self):
+        print(f'{self.name}, на нас напали!')
         days = 1
         while self.count:
             self.count -= self.power
@@ -18,11 +19,7 @@ class Knight(threading.Thread):
             days += 1
             self.count_days += 1
             time.sleep(1)
-
-    def run(self):
-        print(f'{self.name}, на нас напали!')
-        self.fight()
-        print(f'{self.name} одержал победу спустя {self.count_days} дней(дня)!')
+        print(f'{self.name} одержал победу спустя {self.count_days} дней(дня)!\n', end='')
 
 first_knight = Knight('Sir Lancelot', 10)
 second_knight = Knight("Sir Galahad", 20)
