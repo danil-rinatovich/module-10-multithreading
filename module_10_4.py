@@ -25,9 +25,10 @@ class Cafe:
         self.tables = tables
 
     def guest_arrival(self, *guests):
-        
+        pass
 
     def discuss_guests(self):
+        pass
 
 
 # Создание столов
