@@ -25,10 +25,27 @@ class Cafe:
         self.tables = tables
 
     def guest_arrival(self, *guests):
-        pass
+        for table in self.tables:
+            if table.guest is None:
+                table.guest = guests
+                thread = threading.Thread(target=table.guest[table].run)
+                thread.start()
+                print(f'{Guest.name} сел(-а) за стол номер {self.tables}')
+            else:
+                self.queue.put(guests)
+                print(f'{Guest.name} в очереди')
 
     def discuss_guests(self):
-        pass
+        for table in self.tables:
+            if not table.guest is None and table.guest.is_alive():
+                print(f'{table.name} покушал(-а) и ушёл(ушла)')
+                print(f'Стол номер {self.tables} свободен')
+                table.guest = None
+            if not self.queue.empty() and table.guest is None:
+                table.guest = self.queue.get
+                print(f'{Guest.name} вышел(-ла) из очереди и сел(-а) за стол номер {self.tables}')
+                thread = threading.Thread(target=table.guest[table].run)
+                thread.start()
 
 
 # Создание столов
@@ -46,6 +63,3 @@ cafe = Cafe(*tables)
 cafe.guest_arrival(*guests)
 # Обслуживание гостей
 cafe.discuss_guests()
-
-
-
