@@ -33,7 +33,7 @@ class Cafe:
                     print(f'{guest.name} сел(-а) за стол номер {table.number}')
                     break
             else:
-                self.queue.put(guests)
+                self.queue.put(guest)
                 print(f'{guest.name} в очереди')
 
     def discuss_guests(self):
